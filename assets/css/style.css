@@ -58,7 +58,6 @@ body{
       left: 0px;
       height: 100%;
       width: 30px;
-      background-color: rgba($overlay-color,0.3);
       border-radius: 0 50% 50% 0;
       transform: scale(0,1);
       transform-origin: left center;
