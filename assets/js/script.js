@@ -1,7 +1,7 @@
 //Variables para imprimir resultados en el DOM
 let totalResultado = document.querySelector('#total-resultado');
 let totalRealizadas = document.querySelector('#total-realizadas');
-let botonAgregar = document.querySelector('#buttonTask');
+let botonAgregar = document.querySelector('#buttonAgregar');
 let tablaTotales = document.querySelector('#tablaTotales');
 let tablaRealizadas = document.querySelector('#tablaRealizadas');
 
@@ -30,13 +30,14 @@ let tareasRealizadas = [{
     nombre: 'Enviar desafío semanal'
 }];
 
-/*
+
 
 //Agregar nueva tarea
 
-botont.addEventListener("click",function(){
+botonAgregar.addEventListener("click",function(){
+    
 
-    let valorInput = document.querySelector('#textTask');
+    let valorInput = document.querySelector('#textCajaAgregar');
 
     if (valorInput.value==""){
         alert("Debe escribir una tarea nueva");
@@ -53,7 +54,11 @@ botont.addEventListener("click",function(){
     }
 });
 
-
+function refrescar(){
+    refrescarTareas();
+    refrescarRealizadas();
+};
+/*
 
 // checkbox
 
@@ -197,6 +202,5 @@ function refrescarRealizadas(){
 };
 //Función para iniciar pantalla
 window.addEventListener("load", function(){
-    refrescarTareas();
-    refrescarRealizadas();
+    refrescar();
 });
