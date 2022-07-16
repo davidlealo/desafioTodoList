@@ -4,6 +4,9 @@ let totalRealizadas = document.querySelector('#total-realizadas');
 let botonAgregar = document.querySelector('#buttonAgregar');
 let tablaTotales = document.querySelector('#tablaTotales');
 let tablaRealizadas = document.querySelector('#tablaRealizadas');
+let tablaVaciaTareas = document.querySelector('#mensaje-vacio-tareas');
+let tablaVaciaRealizadas = document.querySelector('#mensaje-vacio-realizadas');
+
 
 //Variable contador
 let contadorTotalTareas= 0;
@@ -99,6 +102,9 @@ function eliminarTarea(id){
     const index = tareasIniciales.findIndex((ele) => ele.id == id)
     tareasIniciales.splice(index, 1)
     refrescarTareas()
+    if (tareasIniciales.length === 0) {
+        tablaVaciaTareas.style.display = "block";
+      }
 };
 
 //Eliminar realizada
@@ -106,6 +112,9 @@ function eliminarRealizada(id){
     const index = tareasRealizadas.findIndex((ele) => ele.id == id)
     tareasRealizadas.splice(index, 1)
     refrescarRealizadas()
+    if (tareasRealizadas.length === 0) {
+        tablaVaciaRealizadas.style.display = "block";
+      }
 };
 
 //Función de refrescar tareas

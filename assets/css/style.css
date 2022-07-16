@@ -60,4 +60,7 @@ input[type="text"]::placeholder {
 }
 input[type="text"] {  
     padding-right: 30px; 
-} 
+}
+.mensaje-vacio{
+    display: none;
+}
