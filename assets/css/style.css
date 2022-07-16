@@ -43,5 +43,15 @@ body{
     padding-right: 5px;
 }
 .aplicacion{
-  margin-top: 10px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.card{
+  padding: 10px;
+}
+.btn-without-border{
+  border: none!important;
+  background-color: transparent!important;
+  box-shadow: 0px;
 }
