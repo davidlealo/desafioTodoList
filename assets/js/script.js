@@ -173,6 +173,10 @@ function refrescarRealizadas(){
         ticket.innerHTML = "&#8634;"
         ticket.setAttribute("onclick","restaurarTarea(this,"+x.id+")");
         ticket.setAttribute("class","btn btn-without-border");
+        let cruz = document.createElement('button');
+        cruz.innerHTML = "&#10060;"
+        cruz.setAttribute("onclick","EliminarTarea(this,"+x.id+")");
+        cruz.setAttribute("class","btn btn-without-border");
         
         
 
@@ -183,6 +187,8 @@ function refrescarRealizadas(){
         fila.appendChild(celda1);
         fila.appendChild(celda2);
         fila.appendChild(ticket);
+        fila.appendChild(cruz);
+
         
     }
 
