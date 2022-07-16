@@ -40,7 +40,7 @@ botonAgregar.addEventListener("click",function(){
     let valorInput = document.querySelector('#textCajaAgregar');
 
     if (valorInput.value==""){
-        alert("Debe escribir una tarea nueva");
+        alert("Debe escribir una tarea nueva oara usar el botón 'Agregar'");
     }
     else{
 
@@ -92,7 +92,7 @@ function EliminarTarea(ElementoCruz,idElementoArreglo){
 function refrescarTareas(){
     
     //Inicio de tabla en blanco
-    tareasIniciales.innerHTML = '';
+    tablaTotales.innerHTML = "";
 
     //Creación de primeras partes de la tabla de tareas
     let filaInicial = document.createElement('tr');
@@ -144,11 +144,14 @@ function refrescarTareas(){
     }
 
     totalResultado.innerHTML="Total: " + tareasIniciales.length;
+    
 
 };
+
+
 function refrescarRealizadas(){
     //Inicio de tareas realizadas en clanco
-    tareasRealizadas.innerHTML = '';
+    tablaRealizadas.innerHTML = '';
 
     //Creación de primeras partes de la tabla de realizadas
     let filaRealizadas = document.createElement('tr');
@@ -200,6 +203,8 @@ function refrescarRealizadas(){
     totalRealizadas.innerHTML="Realizadas: " + tareasRealizadas.length;
 
 };
+
+
 //Función para iniciar pantalla
 window.addEventListener("load", function(){
     refrescar();
