@@ -59,35 +59,54 @@ function refrescar(){
     refrescarTareas();
     refrescarRealizadas();
 };
-/*
 
-// checkbox
 
+
+// checkbox paso a tareas realizadas
 function conteoTareasRealizadas(v){
+   
+    let textoNombre = v.previousSibling.innerHTML
 
-    if (v.checked==true){
-        v.parentNode.style.backgroundColor="green";
-        conteoTareasTareasRealizadas++;
+    if (v.value.checked = true){
+        var tareaNuevacheckbox = {
+            id: tareasRealizadas.length+1,
+            nombre:  textoNombre
+        };
     }
-    else{
-        v.parentNode.style.backgroundColor="";
-        conteoTareasTareasRealizadas--;
-    }
-    tr.innerHTML="Realizadas: " + conteoTareasTareasRealizadas;
+    tareasRealizadas.push(tareaNuevacheckbox);
+    eliminarTarea();
+    refrescar();
 };
 
-// eliminar
+// check paso desde tareas realizadas a tareas
+function restaurarTarea(v){
+   
+    let textoNombre = v.previousSibling.innerHTML
 
-function EliminarTarea(ElementoCruz,idElementoArreglo){
+    if (v.value.checked = true){
+        var retornarTareaNuevacheckbox = {
+            id: tareasIniciales.length+1,
+            nombre:  textoNombre
+        };
+    }
+    tareasIniciales.push(retornarTareaNuevacheckbox);
+    eliminarRealizada();
+    refrescar();
+};
 
-    tareasIniciales = tareasIniciales.filter(function(e){
-         return e.id != idElementoArreglo;
-     })
- 
-     refrescar();
-     
- };
-*/
+//Eliminar tarea
+function eliminarTarea(id){
+    const index = tareasIniciales.findIndex((ele) => ele.id == id)
+    tareasIniciales.splice(index, 1)
+    refrescarTareas()
+};
+
+//Eliminar realizada
+function eliminarRealizada(id){
+    const index = tareasRealizadas.findIndex((ele) => ele.id == id)
+    tareasRealizadas.splice(index, 1)
+    refrescarRealizadas()
+};
 
 //Función de refrescar tareas
 function refrescarTareas(){
@@ -128,8 +147,9 @@ function refrescarTareas(){
        
         let cruz = document.createElement('button');
         cruz.innerHTML = "&#10060;"
-        cruz.setAttribute("onclick","EliminarTarea(this,"+x.id+")");
+        cruz.setAttribute("onclick","eliminarTarea(this,"+x.id+")");
         cruz.setAttribute("class","btn btn-without-border");
+
         
         
 
@@ -182,10 +202,13 @@ function refrescarRealizadas(){
         ticket.innerHTML = "&#8634;"
         ticket.setAttribute("onclick","restaurarTarea(this,"+x.id+")");
         ticket.setAttribute("class","btn btn-without-border");
+
+
         let cruz = document.createElement('button');
         cruz.innerHTML = "&#10060;"
-        cruz.setAttribute("onclick","EliminarTarea(this,"+x.id+")");
+        cruz.setAttribute("onclick","eliminarRealizada(this,"+x.id+")");
         cruz.setAttribute("class","btn btn-without-border");
+
         
         
 
