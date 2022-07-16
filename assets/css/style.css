@@ -55,3 +55,9 @@ body{
   background-color: transparent!important;
   box-shadow: 0px;
 }
+input[type="text"]::placeholder {  
+    padding-right: 5px; 
+}
+input[type="text"] {  
+    padding-right: 30px; 
+} 
