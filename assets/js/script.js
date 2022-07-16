@@ -2,7 +2,8 @@
 let totalResultado = document.querySelector('#total-resultado');
 let totalRealizadas = document.querySelector('#total-realizadas');
 let botonAgregar = document.querySelector('#buttonTask');
-let tablaTotales = document.querySelector('#tabla');
+let tablaTotales = document.querySelector('#tablaTotales');
+let tablaRealizadas = document.querySelector('#tablaRealizadas');
 
 //Variable contador
 let contadorTotalTareas= 0;
@@ -24,7 +25,10 @@ let tareasIniciales = [
 ];
 
 //Array de realizadas
-let tareasRealizadas = [];
+let tareasRealizadas = [{
+    id: 1,
+    nombre: 'Enviar desafío semanal'
+}];
 
 /*
 
@@ -79,25 +83,29 @@ function EliminarTarea(ElementoCruz,idElementoArreglo){
  };
 */
 
-//Función de refrescar
-function refrescar(){
+//Función de refrescar tareas
+function refrescarTareas(){
     
     //Inicio de tabla en blanco
     tareasIniciales.innerHTML = '';
 
-    //Creación de primeras partes de la tabla
+    //Creación de primeras partes de la tabla de tareas
     let filaInicial = document.createElement('tr');
     let celda1Inicial = document.createElement('th');
     let celda2Inicial = document.createElement('th');
 
-    //Imprimir texto destacado de la tabla
+
+    //Imprimir texto destacado de la tabla de tareas
     celda1Inicial.innerHTML="ID";
     celda2Inicial.innerHTML="Tarea";
 
-    //appendChild
+
+    //appendChild tareas
     tablaTotales.appendChild(filaInicial);
     filaInicial.appendChild(celda1Inicial);
     filaInicial.appendChild(celda2Inicial);
+
+    
 
 
     //Ciclo for para recorrer array e imprimir tareas
@@ -133,8 +141,56 @@ function refrescar(){
     totalResultado.innerHTML="Total: " + tareasIniciales.length;
 
 };
+function refrescarRealizadas(){
+    //Inicio de tareas realizadas en clanco
+    tareasRealizadas.innerHTML = '';
 
+    //Creación de primeras partes de la tabla de realizadas
+    let filaRealizadas = document.createElement('tr');
+    let celda1Realizadas = document.createElement('th');
+    let celda2Realizadas = document.createElement('th');
+
+    //Imprimir texto destacado de la tabla de tareas realizadas
+    celda1Realizadas.innerHTML="ID";
+    celda2Realizadas.innerHTML="Tarea";
+
+    //appendChild tareas realizadas
+    tablaRealizadas.appendChild(filaRealizadas);
+    filaRealizadas.appendChild(celda1Realizadas);
+    filaRealizadas.appendChild(celda2Realizadas);
+
+    //Ciclo for para recorrer array e imprimir tareas realizadas
+    for (let x of tareasRealizadas){
+        
+        let fila = document.createElement('tr');
+        let celda1 = document.createElement('td');
+        celda1.setAttribute("class","text-decoration-line-through");
+        let celda2 = document.createElement('td');
+        celda2.setAttribute("class","text-decoration-line-through");
+        
+       
+        let ticket = document.createElement('button');
+        ticket.innerHTML = "&#8634;"
+        ticket.setAttribute("onclick","restaurarTarea(this,"+x.id+")");
+        ticket.setAttribute("class","btn btn-without-border");
+        
+        
+
+        celda1.innerHTML=x.id;
+        celda2.innerHTML=x.nombre;
+
+        tablaRealizadas.appendChild(fila);
+        fila.appendChild(celda1);
+        fila.appendChild(celda2);
+        fila.appendChild(ticket);
+        
+    }
+
+    totalRealizadas.innerHTML="Realizadas: " + tareasRealizadas.length;
+
+};
 //Función para iniciar pantalla
 window.addEventListener("load", function(){
-    refrescar();
+    refrescarTareas();
+    refrescarRealizadas();
 });
