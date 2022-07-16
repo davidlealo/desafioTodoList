@@ -51,6 +51,7 @@ botonAgregar.addEventListener("click",function(){
        
         tareasIniciales.push(tareaNueva);
         refrescar();
+        valorInput.value = "";
     }
 });
 
