@@ -174,7 +174,6 @@ function refrescarTareas(){
     }
 
     totalResultado.innerHTML="Total: " + tareasIniciales.length;
-    
 
 };
 
